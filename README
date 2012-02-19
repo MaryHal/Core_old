@@ -1,0 +1,2 @@
+This is a perl script that will check for class openings at the University of Washington.
+It runs a perl-based javascript browser via the Scripter CPAN module.
