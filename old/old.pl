@@ -91,12 +91,11 @@ sub runCore
                 next;
             }
 
-            print "$k: $status\n";
+            print "$k ($v): $status\n";
 
             sleep $sleep;
         }
     }
-    
     #print $scripter->content();
 }
 
@@ -119,11 +118,11 @@ sub login
 sub register 
 {
     my $scripter = shift;
-    my $slnList = shift;
+    my $sln = shift;
     my $username = shift;
     my $password = shift;
 
-    print "$slnList->[0]";
+    print "$sln";
 
     $scripter->get("https://sdb.admin.washington.edu/students/uwnetid/register.asp", 'no_cache' => 1);
 
@@ -143,7 +142,7 @@ sub register
     $scripter->submit_form(
         form_name => 'regform',
         fields => {
-            sln6 => "$v",
+            sln6 => "$sln",
         },
     );
 }
@@ -152,7 +151,7 @@ sub register
 sub createUrl
 {
     my $baseUrl = "https://sdb.admin.washington.edu/timeschd/uwnetid/sln.asp?";
-    my $quarter = "WIN+2012";
+    my $quarter = "SPR+2012";
     my $sln = $_[0];
 
     return $baseUrl . "QTRYR=" . $quarter . "&SLN=" . $sln;
