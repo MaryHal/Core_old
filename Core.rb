@@ -66,6 +66,10 @@ class Course
         #form = browser.form(:id, 'regform')
         #browser.text_field(:name, slnField).set(@sln[0])
         #form.submit
+        
+        if browser.text.include? "Schedule not updated"
+            raise "Error updating schedule: sln #{@sln}"
+        end
     end
 
     def to_s
